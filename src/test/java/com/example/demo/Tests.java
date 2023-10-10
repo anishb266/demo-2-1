@@ -12,9 +12,9 @@ import static org.mockito.Mockito.times;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest({Demo.class})
-class CacheTestClientApplicationTests {
+class Tests {
 
-	public CacheTestClientApplicationTests() {
+	public Tests() {
 
 	}
 
