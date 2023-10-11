@@ -30,6 +30,11 @@
 			<version>2.0.9</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.11.0</version>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -41,6 +46,7 @@
 				<configuration>
 					<argLine>
 						--add-opens java.base/java.lang=ALL-UNNAMED
+						--add-opens java.base/java.lang.reflect=ALL-UNNAMED
 					</argLine>
 				</configuration>
 			</plugin>

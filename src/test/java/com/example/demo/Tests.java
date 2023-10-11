@@ -8,6 +8,9 @@ import org.powermock.api.mockito.PowerMockito;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 import static org.mockito.Mockito.times;
 
 @RunWith(PowerMockRunner.class)
@@ -19,7 +22,15 @@ class Tests {
 	}
 
 	@Test
-	public void test1() {
+	public void test1() throws NoSuchMethodException, InvocationTargetException, InstantiationException, IllegalAccessException {
+
+		Constructor<Demo> conOrgType = Demo.class.getDeclaredConstructor
+				(String.class);
+
+		conOrgType.setAccessible(true);
+
+		Demo demo1 = conOrgType.newInstance("abc");
+
 		//Mock static method
 		PowerMockito.mockStatic(Demo.class);
 
@@ -40,6 +51,12 @@ class Tests {
 }
 
 class Demo {
+
+	private String value;
+
+	public Demo(String value) {
+		this.value = value;
+	}
 
 	public static String message() {
 		return "Hi!";
